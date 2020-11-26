@@ -35,7 +35,14 @@ class _HomePageState extends State<HomePage> {
                 child: Text("vezes clicadas"),
               ),
               Center(
-                child: Text("${s is CounterState ? s.counter : ''}"),
+                child: Text("${s is CounterState ? s.counter : 0}"),
+              ),
+              RaisedButton(
+                onPressed: () {
+                  Modular.to.pushNamed('/bloc_event');
+                },
+                child: const Text('Enabled Button',
+                    style: TextStyle(fontSize: 20)),
               )
             ],
           );

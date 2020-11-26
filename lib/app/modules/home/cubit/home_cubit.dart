@@ -7,7 +7,7 @@ part 'home_state.dart';
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(HomeInitial());
 
-  int _counter = 1;
+  int _counter = 0;
 
   increment() {
     emit(CounterState.teste(_counter += 1));

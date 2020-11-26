@@ -6,3 +6,8 @@ abstract class BlocEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class HomeBlocEvent extends BlocEvent {
+  @override
+  List<Object> get props => [];
+}
