@@ -8,6 +8,7 @@ abstract class BlocEvent extends Equatable {
 }
 
 class HomeBlocEvent extends BlocEvent {
+  final int oi = 0;
   @override
-  List<Object> get props => [];
+  List<Object> get props => [oi];
 }

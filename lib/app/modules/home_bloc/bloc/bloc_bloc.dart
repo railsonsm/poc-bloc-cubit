@@ -12,6 +12,9 @@ class BlocBloc extends Bloc<BlocEvent, BlocState> {
 
   @override
   Stream<BlocState> mapEventToState(BlocEvent event) async* {
+    if (event is HomeBlocEvent) {
+      print("oi");
+    }
     yield teste(_count);
   }
 
