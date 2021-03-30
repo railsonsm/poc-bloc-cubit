@@ -4,12 +4,17 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 part 'home_state.dart';
 
-class HomeCubit extends Cubit<HomeState> {
-  HomeCubit() : super(HomeInitial());
+class HomeCubit extends Cubit<CounterState> {
+  HomeCubit() : super(CounterState(counter: 0));
 
-  int _counter = 0;
+  int counter = 0;
 
   increment() {
-    emit(CounterState.teste(_counter += 1));
+    emit(CounterState.teste(counter += 1));
+  }
+
+  @override
+  Future<void> close() {
+    return super.close();
   }
 }

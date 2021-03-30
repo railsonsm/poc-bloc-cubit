@@ -1,33 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:poc_bloc_cubit/app/modules/home/home_module.dart';
 
 import 'cubit/home_cubit.dart';
 
-class HomePage extends StatefulWidget {
-  final String title;
-  const HomePage({Key key, this.title = "Home cubit"}) : super(key: key);
+class HomePage extends StatelessWidget {
+  final _bloc = HomeModule.to.get<HomeCubit>();
 
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  HomeCubit _bloc = Modular.get<HomeCubit>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(' dsdsd'),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _bloc.increment(),
         tooltip: 'Increment Counter',
         child: const Icon(Icons.add),
       ),
-      body: BlocProvider(
-        create: (context) => _bloc,
-        child: BlocConsumer<HomeCubit, HomeState>(builder: (c, s) {
+      body: BlocProvider<HomeCubit>(
+        create: (c) => _bloc,
+        child: BlocBuilder<HomeCubit, CounterState>(builder: (c, s) {
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -35,7 +29,7 @@ class _HomePageState extends State<HomePage> {
                 child: Text("vezes clicadas"),
               ),
               Center(
-                child: Text("${s is CounterState ? s.counter : 0}"),
+                child: Text("${s.counter}"),
               ),
               RaisedButton(
                 onPressed: () {
@@ -47,8 +41,6 @@ class _HomePageState extends State<HomePage> {
               )
             ],
           );
-        }, listener: (context, state) {
-          if (state is CounterState) print(state.counter);
         }),
       ),
     );

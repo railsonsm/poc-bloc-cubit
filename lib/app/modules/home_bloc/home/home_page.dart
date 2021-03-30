@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:poc_bloc_cubit/app/modules/home_bloc/bloc/bloc_bloc.dart';
+import 'package:poc_bloc_cubit/app/modules/home_bloc/home_bloc_module.dart';
 
 class HomeBlocPage extends StatefulWidget {
   final String title;
@@ -12,18 +13,17 @@ class HomeBlocPage extends StatefulWidget {
 }
 
 class _HomeBlocPageState extends State<HomeBlocPage> {
+  var blocBloc = HomeBlocModule.to.get<BlocBloc>();
+
   @override
   Widget build(BuildContext context) {
-    var blocBloc = Modular.get<BlocBloc>();
-
+    print(blocBloc);
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          return blocBloc.add(HomeBlocEvent());
-        },
+        onPressed: () => blocBloc.add(HomeBlocEvent()),
         tooltip: 'Increment Counter',
         child: const Icon(Icons.add),
       ),
@@ -37,10 +37,11 @@ class _HomeBlocPageState extends State<HomeBlocPage> {
             ),
             BlocBuilder<BlocBloc, BlocState>(
               builder: (c, s) {
-                print("Center");
-                return Center(
-                  child: Text("${s is CountState ? s.count : 0}"),
-                );
+                if (s is CountState) {
+                  return Center(child: Text("${s.count}"));
+                } else {
+                  return Center(child: Text("0"));
+                }
               },
             ),
           ],
