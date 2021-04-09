@@ -7,7 +7,7 @@ import 'package:poc_bloc_cubit/app/modules/home_bloc/home_bloc_module.dart';
 
 import 'bloc/app_bloc.dart';
 
-class AppModule extends MainModule {
+class AppModule extends Module {
   @override
   List<Bind> get binds => [
         Bind((i) => InitialAppState()),
@@ -15,13 +15,8 @@ class AppModule extends MainModule {
       ];
 
   @override
-  List<ModularRouter> get routers => [
-        ModularRouter(Modular.initialRoute, module: HomeModule()),
-        ModularRouter("/bloc_event", module: HomeBlocModule())
+  List<ModularRoute> get routes => [
+        ModuleRoute(Modular.initialRoute, module: HomeModule()),
+        ModuleRoute("/bloc_event", module: HomeBlocModule())
       ];
-
-  @override
-  Widget get bootstrap => AppWidget();
-
-  static Inject get to => Inject<AppModule>.of();
 }

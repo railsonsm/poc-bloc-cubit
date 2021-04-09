@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:poc_bloc_cubit/app/modules/home_bloc/bloc/bloc_bloc.dart';
-import 'package:poc_bloc_cubit/app/modules/home_bloc/home_bloc_module.dart';
 
 class HomeBlocPage extends StatefulWidget {
   final String title;
@@ -13,7 +12,7 @@ class HomeBlocPage extends StatefulWidget {
 }
 
 class _HomeBlocPageState extends State<HomeBlocPage> {
-  var blocBloc = HomeBlocModule.to.get<BlocBloc>();
+  var blocBloc = Modular.get<BlocBloc>();
 
   @override
   Widget build(BuildContext context) {

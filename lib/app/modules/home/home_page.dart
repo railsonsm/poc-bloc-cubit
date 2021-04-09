@@ -6,7 +6,7 @@ import 'package:poc_bloc_cubit/app/modules/home/home_module.dart';
 import 'cubit/home_cubit.dart';
 
 class HomePage extends StatelessWidget {
-  final _bloc = HomeModule.to.get<HomeCubit>();
+  final _bloc = Modular.get<HomeCubit>();
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class HomePage extends StatelessWidget {
               RaisedButton(
                 onPressed: () {
                   Modular.to.pushNamedAndRemoveUntil(
-                      '/bloc_event', ModalRoute.withName('/'));
+                      '/bloc_events', ModalRoute.withName("/"));
                 },
                 child: const Text('Enabled Button',
                     style: TextStyle(fontSize: 20)),
