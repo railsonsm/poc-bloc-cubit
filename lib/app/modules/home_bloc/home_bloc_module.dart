@@ -8,6 +8,6 @@ class HomeBlocModule extends Module {
 
   @override
   List<ModularRoute> get routes => [
-        ChildRoute('/', child: (_, args) => HomeBlocPage()),
+        ChildRoute('/:teste', child: (_, args) => HomeBlocPage()),
       ];
 }

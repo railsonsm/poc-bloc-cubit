@@ -34,7 +34,7 @@ class HomePage extends StatelessWidget {
               RaisedButton(
                 onPressed: () {
                   Modular.to.pushNamedAndRemoveUntil(
-                      '/bloc_events', ModalRoute.withName("/"));
+                      '/bloc_events/teste', ModalRoute.withName("/"));
                 },
                 child: const Text('Enabled Button',
                     style: TextStyle(fontSize: 20)),
